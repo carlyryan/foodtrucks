@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <title>food truckery</title>
+  </head>
+  <body>
+    <h1> 🚚 🚚 😎 🌭 </h1>
+    <p> Well, well, well.... It has finally happened 🎉 if we all contribute, we all reap the spicy sweet benefits. Flag when when a truck is spotted on campus, write reviews and add new trucks. Anyone can partake to view whats where and when but only trusted truckers can do flagging or adding😎😎 ...Get playin! </p>
+
+    <ul>
+      <% for (t in trucks) { %>
+      <li><%= trucks[t] %></li>
+      <% } %>
+    </ul>
+
+    <div>
+    <center>
+    <form method="POST">
+      There's a new food truck in town <br />
+      <input type="text" name="question" />
+      <br /> 
+      <button type="submit">Add truckery</button>
+    </form>
+    <a href="/account/login">Log in</a> to prove you're a trusted trucker🚚.
+    </center>
+    </div>
+  </body>
+</html>
