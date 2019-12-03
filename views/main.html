@@ -1,6 +1,26 @@
 <html>
   <head>
     <title>food truckery</title>
+    <style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 40%;
+  border-radius: 5px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+img {
+  border-radius: 5px 5px 0 0;
+}
+
+.container {
+  padding: 2px 16px;
+}
+   </style>
   </head>
   <body>
     <h1> 🚚 🚚 😎 🌭 </h1>
@@ -8,20 +28,41 @@
 
     <ul>
       <% for (t in trucks) { %>
-      <li><%= trucks[t] %></li>
-      <% } %>
+
+    <div class="card">
+    <div class="container">
+      <div id="googleMap" style="width:100%;height:400px;"></div>
+      <script>
+      function myMap() {
+      var mapProp= {
+        center:new google.maps.LatLng(39.954032, -75.1946),
+        zoom:13,
+      };
+      var uluru = {lat: 39.954032, lng: -75.1946};
+      var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+      var marker = new google.maps.Marker({position: uluru, map: map});
+      }
+      </script>
+
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaEHdp0jo8ltHFbFEGO3fjVNG--NBJ26k&callback=myMap"></script>
+    <h4><b> <%= trucks[t].name%> </b></h4>
+      <p> <%= trucks[t].location%> </p>
+    </div>
+    </div>
+    <% } %>
     </ul>
 
     <div>
-    <center>
-    <form method="POST">
-      There's a new food truck in town <br />
+      <center>
+      <form method="POST">
+      There's a new food truck in town: <br />
       <input type="text" name="truck" />
       <br /> 
       <button type="submit">Add truckery</button>
-    </form>
-    <a href="/account/login">Log in</a> to prove you're a trusted trucker🚚.
-    </center>
+      </form>
+      <a href="/auth/facebook" class="btn btn-primary"> Facebook</a>
+      login to register to prove you're a trusted trucker🚚.
+      </center>
     </div>
   </body>
 </html>

@@ -1,11 +1,12 @@
 var mongoose = require('mongoose')
 
 var truckSchema = new mongoose.Schema({
-	name : String,
+	name: { type: String },
+	location: { type: String },
+	photo: { type: String },
 	onCampusCurrently : Boolean,
-	owner : String,
 	long : Number,
-	lat : Number,
+ 	lat : Number,
 })
 
 module.exports = mongoose.model('Truck', truckSchema)
