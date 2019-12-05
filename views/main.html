@@ -24,13 +24,8 @@ img {
   </head>
   <body>
     <h1> 🚚 🚚 😎 🌭 </h1>
-    <p> Well, well, well.... It has finally happened 🎉 if we all contribute, we all reap the spicy sweet benefits. Flag when when a truck is spotted on campus, write reviews and add new trucks. Anyone can partake to view whats where and when but only trusted truckers can do flagging or adding😎😎 ...Get playin! </p>
+    <p> Well well well... what have we here?! </p>
 
-    <ul>
-      <% for (t in trucks) { %>
-
-    <div class="card">
-    <div class="container">
       <div id="googleMap" style="width:100%;height:400px;"></div>
       <script>
       function myMap() {
@@ -38,30 +33,40 @@ img {
         center:new google.maps.LatLng(39.954032, -75.1946),
         zoom:13,
       };
-      var uluru = {lat: 39.954032, lng: -75.1946};
       var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-      var marker = new google.maps.Marker({position: uluru, map: map});
+      fetch('mongodb://localhost:27017/hw5-new')
       }
       </script>
 
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaEHdp0jo8ltHFbFEGO3fjVNG--NBJ26k&callback=myMap"></script>
-    <h4><b> <%= trucks[t].name%> </b></h4>
-      <p> <%= trucks[t].location%> </p>
-    </div>
-    </div>
-    <% } %>
-    </ul>
 
+<br />
+
+
+    <% for (t in trucks) { %>
+    <div class="card">
+    <div class="container">
+    <h4><b> <%= trucks[t].name%> </b></h4>
+      <p> 📍👀<%= trucks[t].location%> </p>
+      <p> 💸 <%= trucks[t].venmo%> </p>
+      <p> </p>
+    </div>
+    </div>
+    <br />
+    <% } %>
+
+<br />
+<br />
     <div>
       <center>
       <form method="POST">
       There's a new food truck in town: <br />
-      <input type="text" name="truck" />
+     <!--  <input type="text" name="truck" /> -->
       <br /> 
-      <button type="submit">Add truckery</button>
+      <button type="submit" action='/add'>Add truckery</button>
       </form>
-      <a href="/auth/facebook" class="btn btn-primary"> Facebook</a>
-      login to register to prove you're a trusted trucker🚚.
+      <!-- <a href="/auth/facebook" class="btn btn-primary"> Facebook</a>
+      login to register to prove you're a trusted trucker🚚. -->
       </center>
     </div>
   </body>
